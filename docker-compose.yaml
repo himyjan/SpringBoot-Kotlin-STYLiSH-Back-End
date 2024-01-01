@@ -1,0 +1,27 @@
+services:
+  backend:
+    image: 'backend:latest'
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DB_URL: ${DB_URL}
+        PG_USER: ${DB_USER}
+        PG_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '8080:8080'
+    environment:
+      DB_URL: localhost:3306
+      DB_USER: myuser
+      DB_PASSWORD: secret
+    depends_on:
+      - mariadb
+  mariadb:
+    image: 'mariadb:latest'
+    environment:
+      - 'MARIADB_DATABASE=mydatabase'
+      - 'MARIADB_PASSWORD=secret'
+      - 'MARIADB_ROOT_PASSWORD=verysecret'
+      - 'MARIADB_USER=myuser'
+    ports:
+      - '3306'
