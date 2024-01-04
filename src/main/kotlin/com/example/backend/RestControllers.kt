@@ -1,7 +1,10 @@
 package com.example.backend
 
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -33,33 +36,19 @@ class CarouselController {
     @GetMapping fun CarouselData() = carousel
 }
 
-// @RestController
-// @RequestMapping("api/1.0/products/{category}")
-// class ProductController {
-//     val productData = arrayListOf(
-//         ProductData(201807242222, "men", "經典商務西裝", "厚薄：薄\r\n彈性：無", 3999, "棉 100%", "手洗，溫水", "中國",
-// "實品顏色依單品照為主", "O.N.S is all about options, which is why we took our staple polo shirt and
-// upgraded it with slubby linen jersey, making it even lighter for those who prefer their summer
-// style extra-breezy.", "https://api.appworks-school.tw/assets/201807242222/main.jpg",
-// arrayListOf<String>("https://api.appworks-school.tw/assets/201807242222/0.jpg",
-//                 "https://api.appworks-school.tw/assets/201807242222/1.jpg",
-//                 "https://api.appworks-school.tw/assets/201807242222/0.jpg",
-//                 "https://api.appworks-school.tw/assets/201807242222/1.jpg"),
-// arrayListOf<Variant>(Variant("334455", "S", 9), Variant("334455", "M", 5), Variant("334455", "L",
-// 1), Variant("334455", "XL", 9)), arrayListOf<Color>(Color("334455", "深藍")), arrayListOf<String>(
-// "S",
-//                 "M",
-//                 "L",
-//                 "XL"))
-//     )
-//     val products: ProductData = Product(productData)
+@RestController
+@RequestMapping("api/1.0/products/{category}")
+class ProductController {
+    val productData = arrayListOf<ProductData>()
 
-//     @GetMapping
-//     fun getProducts(
-//         @PathVariable category: String,
-//         @RequestParam paging: Int
-//     ): ResponseEntity<List<Product>> =  ResponseEntity.ok(listOf(products))
-// }
+    val products: Product = Product(productData)
+
+    @GetMapping
+    fun getProducts(
+        @PathVariable category: String,
+        @RequestParam paging: Int
+    ): ResponseEntity<List<Product>> = ResponseEntity.ok(listOf(products))
+}
 
 // // 在 RestControllers.kt 中新增一個新的 Controller
 // @RestController
