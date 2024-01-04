@@ -8,7 +8,8 @@ plugins {
   id 'org.graalvm.buildtools.native' version '0.9.28'
   id 'org.jetbrains.kotlin.jvm' version '2.0.0-Beta2'
   id 'org.jetbrains.kotlin.plugin.spring' version '2.0.0-Beta2'
-  id 'org.jetbrains.kotlin.plugin.jpa' version "2.0.0-Beta2"
+  id 'org.jetbrains.kotlin.plugin.jpa' version '2.0.0-Beta2'
+  id 'com.ncorti.ktfmt.gradle' version '0.16.0'
 }
 
 group = 'com.example'
@@ -55,4 +56,24 @@ hibernate {
   enhancement {
     enableAssociationManagement = true
   }
+}
+
+ktfmt {
+    // // Dropbox style - 4 space indentation
+    // dropboxStyle()
+    
+    // // Google style - 2 space indentation
+    // googleStyle()
+    
+    // KotlinLang style - 4 space indentation - From kotlinlang.org/docs/coding-conventions.html
+    kotlinLangStyle()
+
+    // // Breaks lines longer than maxWidth. Default 100.
+    // maxWidth.set(80)
+    // // blockIndent is the indent size used when a new block is opened, in spaces.
+    // blockIndent.set(8)
+    // // continuationIndent is the indent size used when a line is broken because it's too
+    // continuationIndent.set(8)
+    // // Whether ktfmt should remove imports that are not used.
+    // removeUnusedImports.set(false)
 }

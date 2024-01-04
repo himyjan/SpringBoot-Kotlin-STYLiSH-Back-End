@@ -1,7 +1,15 @@
 # Getting Started
+SpringBoot run
 ```
 gradle bootRun
+or
+docker-compose up
 ```
+kotlin code format
+```
+gradle ktfmtFormat
+```
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 
