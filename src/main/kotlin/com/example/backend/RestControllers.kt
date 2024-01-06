@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("api/1.0/marketing/campaigns")
 class CarouselController {
-    val carouselData =
+    private val carouselData =
         arrayListOf(
             CarouselData(
                 1,
@@ -31,23 +31,23 @@ class CarouselController {
                 "瞬間\r\n在城市的角落\r\n找到失落多時的記憶。\r\n印象《都會故事集》"
             )
         )
-    val carousel: Carousel = Carousel(carouselData)
+    private val carousel: Carousel = Carousel(carouselData)
 
-    @GetMapping fun CarouselData() = carousel
+    @GetMapping fun getCarousel() = carousel
 }
 
 @RestController
 @RequestMapping("api/1.0/products/{category}")
 class ProductController {
-    val productData = arrayListOf<ProductData>()
+    private val productData: ArrayList<ProductData> = arrayListOf<ProductData>()
 
-    val products: Product = Product(productData)
+    private val products: Product = Product(productData)
 
     @GetMapping
     fun getProducts(
         @PathVariable category: String,
         @RequestParam paging: Int
-    ): ResponseEntity<List<Product>> = ResponseEntity.ok(listOf(products))
+    ): ResponseEntity<Product> = ResponseEntity.ok(products)
 }
 
 // // 在 RestControllers.kt 中新增一個新的 Controller
