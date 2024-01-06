@@ -18,12 +18,22 @@ services:
       - mariadb
   mariadb:
     image: 'mariadb:latest'
+    ports:
+      - '3306:3306'
     environment:
       - 'MARIADB_DATABASE=mydatabase'
       - 'MARIADB_PASSWORD=secret'
       - 'MARIADB_ROOT_PASSWORD=verysecret'
       - 'MARIADB_USER=myuser'
-    ports:
-      - '3306:3306'
     volumes:
       - ./stylish.sql:/docker-entrypoint-initdb.d/stylish.sql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: unless-stopped
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: mariadb
+      MARIADB_PASSWORD: '${MARIADB_PASSWORD}'
+    depends_on:
+      - mariadb
