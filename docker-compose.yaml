@@ -11,7 +11,7 @@ services:
     ports:
       - '8080:8080'
     environment:
-      DB_URL: jdbc:mariadb://mariadb:3306/mydatabase
+      DB_URL: jdbc:mariadb://mariadb:3306/mydatabase?serverTimezone=UTC&useSSL=false
       MARIADB_USER: myuser
       MARIADB_PASSWORD: secret
     depends_on:
