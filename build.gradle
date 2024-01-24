@@ -9,6 +9,7 @@ plugins {
   id 'org.jetbrains.kotlin.jvm' version '2.0.0-Beta3'
   id 'org.jetbrains.kotlin.plugin.spring' version '2.0.0-Beta3'
   id 'org.jetbrains.kotlin.plugin.jpa' version '2.0.0-Beta3'
+  id 'org.jetbrains.kotlin.plugin.allopen' version '2.0.0-Beta3'
   id 'com.ncorti.ktfmt.gradle' version '0.16.0'
 }
 
@@ -40,6 +41,12 @@ dependencies {
   developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
   runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+allOpen {
+  annotation("jakarta.persistence.Entity")
+  annotation("jakarta.persistence.Embeddable")
+  annotation("jakarta.persistence.MappedSuperclass")
 }
 
 tasks.withType(KotlinCompile).configureEach {
