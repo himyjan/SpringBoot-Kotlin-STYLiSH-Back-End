@@ -17,12 +17,12 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
 java {
-  sourceCompatibility = '21'
-  targetCompatibility = '21'
+  sourceCompatibility = '23'
+  targetCompatibility = '23'
 }
 
 kotlin {
-  jvmToolchain(21)
+  jvmToolchain(23)
   compilerOptions {
     apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
   }
